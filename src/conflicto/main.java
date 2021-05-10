@@ -1,33 +1,31 @@
 package conflicto;
 
-public class main {
+import java.util.List;
+
+public class Main {
 
 	public static void main(String[] args) {
-		Tablero tablero = new Tablero (8,2);
-//		tablero.agregarReina(new Reina(2,1));
-//		tablero.agregarReina(new Reina(8,2));
-//		tablero.agregarReina(new Reina(1,3));
-//		tablero.agregarReina(new Reina(3,4));
-//		tablero.agregarReina(new Reina(6,5));
-//		tablero.agregarReina(new Reina(4,6));
-//		tablero.agregarReina(new Reina(7,7));
-//		tablero.agregarReina(new Reina(5,8));
-//		tablero.agregarReina(new Reina(3,5));
-//		tablero.agregarReina(new Reina(3,6));
+
+
+		Archivo archivoEntrada = new Archivo("reinas.in");
+
+		List<String> datos;
+
+		datos = archivoEntrada.leerArchivo();
 		
+		String[] primerLinea = datos.get(0).split(" ");
 		
-		tablero.agregarReina(new Reina(4,1));
-		tablero.agregarReina(new Reina(8,2));
-		tablero.agregarReina(new Reina(1,3));
-		tablero.agregarReina(new Reina(3,4));
-		tablero.agregarReina(new Reina(6,5));
-		tablero.agregarReina(new Reina(2,6));
-		tablero.agregarReina(new Reina(7,7));
-		tablero.agregarReina(new Reina(5,8));
+		Tablero tablero = new Tablero (Integer.parseInt(primerLinea[0]), Integer.parseInt(primerLinea[1]));
 		
-		//tablero.agregarReina(new Reina(,0));
-		//System.out.println(tablero);
+		for (int i=1; i<=Integer.parseInt(primerLinea[1]); i++) {
+			String[] lineas = datos.get(i).split(" ");
+			tablero.agregarReina(new Reina(Integer.parseInt(lineas[0]),Integer.parseInt(lineas[1])));
+		}
+
 		tablero.procesar();
+		
+		new Archivo ("reinas.out").escribirArchivo (tablero.toString());
+		
 		tablero.mostrarReinas();
 	}
 

@@ -52,9 +52,9 @@ public class Reina {
 	
 	@Override
 	public String toString() {
-		String retornar=reinasConflictivas.size()+" ";
+		String retornar=reinasConflictivas.size()+"";
 		for (Integer conflictos : reinasConflictivas) {
-			retornar+=conflictos+" ";
+			retornar+=" "+conflictos;
 		}
 		return retornar;
 	}

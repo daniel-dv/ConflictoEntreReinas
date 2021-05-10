@@ -4,14 +4,14 @@ import java.util.List;
 import java.util.LinkedList;
 
 public class Tablero {
-	private int n;
-	private int cantReinas;
+//	private int n;
+//	private int cantReinas;
 	private List<Reina> reinas = new LinkedList<Reina>();
 	// private Reina [][] matReinas = new Reina[n][n];
 
 	public Tablero(int n, int cantReinas) {
-		this.n = n;
-		this.cantReinas = cantReinas;
+//		this.n = n;
+//		this.cantReinas = cantReinas;
 	}
 
 	public void agregarReina(Reina reina) {
@@ -98,5 +98,18 @@ public class Tablero {
 			System.out.println(reina);
 		}
 	}
+
+	@Override
+	public String toString() {
+		String salida = "";
+		for (Reina reina : reinas) {
+			salida+=reina+"\n";
+			}
+		//borro el ultimo \n
+		salida=salida.substring(0, salida.length()-2);
+		return salida;
+	}
+	
+	
 
 }
