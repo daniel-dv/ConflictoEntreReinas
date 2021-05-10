@@ -35,8 +35,12 @@ public class Reina {
 		return reinasConflictivas;
 	}
 	
-	public void agregarConflicto(Reina reina) {
-		reinasConflictivas.add(reina.getNumReina());
+	public void agregarConflictos(Reina [] reina) {
+		for (Reina reina2 : reina) {
+			if (reina2!=null)
+				reinasConflictivas.add(reina2.getNumReina());
+		}
+		///reinasConflictivas.add(reina.getNumReina());
 		reinasConflictivas.sort(null);
 	}
 
@@ -57,6 +61,8 @@ public class Reina {
 
 
 	public double distanciaAReina(Reina reina2) {
+		if (reina2==null)
+			return Double.MAX_VALUE;
 		return Math.sqrt(Math.pow(reina2.col-this.col,2)+Math.pow(reina2.fil-this.fil,2));
 	}
 	
