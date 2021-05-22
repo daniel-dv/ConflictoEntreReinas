@@ -6,14 +6,13 @@ import java.util.List;
 public class Reina {
 	private int fil, col;
 	private final int numReina;
-	private static int cantReinas=1;
 	private List<Integer> reinasConflictivas = new LinkedList<Integer>();
 	
 	
-	public Reina(int fil, int col) {
+	public Reina(int fil, int col, int numReina) {
 		this.fil = fil;
 		this.col = col;
-		this.numReina=cantReinas++;
+		this.numReina=numReina;
 	}
 
 
@@ -40,22 +39,15 @@ public class Reina {
 			if (reina2!=null)
 				reinasConflictivas.add(reina2.getNumReina());
 		}
-		///reinasConflictivas.add(reina.getNumReina());
 		reinasConflictivas.sort(null);
 	}
 
-//
-//	@Override
-//	public String toString() {
-//		return "Reina " + numReina+": " + fil + "," + col +" Tiene conflictos con reinas: "+ this.reinasConflictivas;
-//	}
-	
+
 	@Override
 	public String toString() {
 		String retornar=reinasConflictivas.size()+"";
-		for (Integer conflictos : reinasConflictivas) {
+		for (Integer conflictos : reinasConflictivas)
 			retornar+=" "+conflictos;
-		}
 		return retornar;
 	}
 
@@ -65,7 +57,6 @@ public class Reina {
 			return Double.MAX_VALUE;
 		return Math.sqrt(Math.pow(reina2.col-this.col,2)+Math.pow(reina2.fil-this.fil,2));
 	}
-	
 	
 	
 	

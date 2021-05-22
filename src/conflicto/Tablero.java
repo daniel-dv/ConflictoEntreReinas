@@ -4,21 +4,25 @@ import java.util.List;
 import java.util.LinkedList;
 
 public class Tablero {
-//	private int n;
-//	private int cantReinas;
+	private int n;
+	private int cantReinas;
 	private List<Reina> reinas = new LinkedList<Reina>();
-	// private Reina [][] matReinas = new Reina[n][n];
 
 	public Tablero(int n, int cantReinas) {
-//		this.n = n;
-//		this.cantReinas = cantReinas;
+		this.n = n;
+		this.cantReinas = cantReinas;
 	}
 
-	public void agregarReina(Reina reina) {
-		reinas.add(reina);
+	public boolean agregarReina(Reina reina) {
+		if (cantReinas > reinas.size() && reina.getCol() <=n && reina.getFil() <=n) {
+			reinas.add(reina);
+			return true;
+		}
+		else
+			return false;
 	}
 
-	public void procesar() {
+	public void calcularConflictos() {
 		for (Reina reina : reinas) {
 			Reina[] conflictos = new Reina[8];
 			// En este vector se guardan los conflictos que se analizan,
@@ -93,20 +97,14 @@ public class Tablero {
 		}
 	}
 
-	public void mostrarReinas() {
-		for (Reina reina : reinas) {
-			System.out.println(reina);
-		}
-	}
-
 	@Override
 	public String toString() {
 		String salida = "";
+		if (this.reinas.size()==0)
+			return salida; //caso especial: hay 0 reinas
 		for (Reina reina : reinas) {
 			salida+=reina+"\n";
 			}
-		//borro el ultimo \n
-		salida=salida.substring(0, salida.length()-2);
 		return salida;
 	}
 	

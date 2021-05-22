@@ -6,7 +6,6 @@ import java.io.FileReader;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,19 +19,6 @@ public class Archivo {
 	public Archivo(String nombreArchivo) {
 		this.nombreArchivo = nombreArchivo;
 	}
-
-	public void escribirArchivoEnteros() throws IOException {
-
-		FileWriter archivo = new FileWriter(this.nombreArchivo);
-		PrintWriter pw = new PrintWriter(archivo);
-
-		for (int i = 0; i < (int) Math.floor(Math.random() * (20000 - 10000 + 1) + 10000); i++)
-			pw.println((int) Math.floor(Math.random() * 12001));
-
-		archivo.close();
-
-	}
-	
 	
 
 	public List<String> leerArchivo() {
@@ -78,7 +64,7 @@ public class Archivo {
             fichero = new FileWriter(this.nombreArchivo);
             pw = new PrintWriter(fichero);
 
-            pw.println(datos);
+            pw.print(datos);
 
         } catch (Exception e) {
             e.printStackTrace();
